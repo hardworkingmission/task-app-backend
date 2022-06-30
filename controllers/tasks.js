@@ -1,5 +1,6 @@
 const { Task } = require('../models/Task');
 
+//all tasks
 const allTasks = async (req, res) => {
   const result = await Task.find({});
   res.send(result);
