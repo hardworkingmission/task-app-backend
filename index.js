@@ -24,5 +24,5 @@ const start = () => {
 start();
 
 app.get('/', (req, res) => {
-  res.send('Welcome to object management backend');
+  res.send('Welcome to task app backend');
 });
