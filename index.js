@@ -26,3 +26,8 @@ start();
 app.get('/', (req, res) => {
   res.send('Welcome to task app backend');
 });
+
+// error handle
+app.use((err, req, res, next) => {
+  res.status(500).send(err.message);
+});

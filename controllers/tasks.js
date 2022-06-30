@@ -18,19 +18,27 @@ const createTask = async (req, res) => {
   res.send(result);
 };
 
-const updateTask = async (req, res) => {
-  const taskId = req.params.id;
-  const updatedTask = req.body;
-  const result = await Task.findByIdAndUpdate(taskId, updatedTask, {
-    new: true,
-  });
-  res.send(result);
+const updateTask = async (req, res, next) => {
+  try {
+    const taskId = req.params.id;
+    const updatedTask = req.body;
+    const result = await Task.findByIdAndUpdate(taskId, updatedTask, {
+      new: true,
+    });
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
 };
 
-const deleteTask = async (req, res) => {
-  const taskId = req.params.id;
-  const result = await Task.findByIdAndDelete(taskId);
-  res.send(result);
+const deleteTask = async (req, res, next) => {
+  try {
+    const taskId = req.params.id;
+    const result = await Task.findByIdAndDelete(taskId);
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = {
