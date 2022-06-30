@@ -21,7 +21,9 @@ const createTask = async (req, res) => {
 const updateTask = async (req, res) => {
   const taskId = req.params.id;
   const updatedTask = req.body;
-  const result = await Task.findByIdAndUpdate(taskId, updatedTask);
+  const result = await Task.findByIdAndUpdate(taskId, updatedTask, {
+    new: true,
+  });
   res.send(result);
 };
 
